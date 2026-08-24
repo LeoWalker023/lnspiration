@@ -1,6 +1,6 @@
 window.INSPIRATION_PRODUCTS = [
   {
-    id: "airename", name: "Airename", fullName: "AI Rename Pro Studio", version: "2.0.5", platforms: "Windows",
+    id: "airename", name: "Airename", fullName: "AI Rename Pro Studio", version: "2.0.5", platforms: "Windows", category: "software", releaseDateISO: "2026-08-20",
     description: "面向设计资产、游戏资源和图片素材的批量整理工具。导入素材，选择规则或 AI 命名方式，在实时预览中确认结果，再批量处理。",
     releaseDate: "2026 年 8 月 20 日", releaseTitle: "AI Rename Pro Studio 2.0.5",
     stories: [
@@ -11,7 +11,7 @@ window.INSPIRATION_PRODUCTS = [
     assets: [{ name: "AI-Rename-Pro-Studio-2.0.5.exe", label: "Windows 安装包", url: "https://github.com/LeoWalker023/AI-Rename-Pro-Studio-Releases/releases/download/v2.0.5/AI-Rename-Pro-Studio-2.0.5.exe" }, { name: "AI-Rename-Pro-Studio-2.0.5.exe.sha256", label: "SHA-256 校验文件", url: "https://github.com/LeoWalker023/AI-Rename-Pro-Studio-Releases/releases/download/v2.0.5/AI-Rename-Pro-Studio-2.0.5.exe.sha256" }]
   },
   {
-    id: "linguatype", name: "翻译虎", fullName: "LinguaType", version: "1.1.6", platforms: "Windows · macOS",
+    id: "linguatype", name: "翻译虎", fullName: "LinguaType", version: "1.1.6", platforms: "Windows · macOS", category: "software", releaseDateISO: "2026-08-18",
     description: "轻量、快捷的桌面翻译工具。按下快捷键即可呼出，常驻托盘而不打断当前工作，适合阅读、沟通和每天遇到的语言切换。",
     releaseDate: "2026 年 8 月 18 日", releaseTitle: "LinguaType 1.1.6",
     stories: [
@@ -23,14 +23,14 @@ window.INSPIRATION_PRODUCTS = [
     assets: [{ name: "LinguaType-1.1.6.exe", label: "Windows 安装包", url: "https://github.com/LeoWalker023/LinguaType-Releases/releases/download/v1.1.6/LinguaType-1.1.6.exe" }]
   },
   {
-    id: "animationpathprotector", name: "Animation Path Protector", fullName: "Unity Editor Plugin", version: "1.0.0", platforms: "Unity 2021.3+",
+    id: "animationpathprotector", name: "Animation Path Protector", fullName: "Unity Editor Plugin", version: "1.0.0", platforms: "Unity 2021.3+", category: "unity", releaseDateISO: "2026-08-24",
     description: "创建 Animator 后挂载组件，插件会持续维护动画与层级路径的连接。你可以自由修改节点层级、位置和名称，动画曲线会自动同步，不再因为重构而断链。",
     releaseDate: "2026 年 8 月 24 日", releaseTitle: "Animation Path Protector 1.0.0",
     features: ["在 Animator 对象上挂载 Animation Path Protector", "持续监视动画涉及的子节点和层级路径", "修改节点位置、层级或名称后自动重新接驳动画", "Inspector 显示当前监视的节点数量与保护状态", "支持刷新节点快照并记录 Unity Undo", "轻量 C# 编辑器插件，不增加运行时依赖"],
     assets: [{ name: "lnspiration-unity-plugins-main.zip", label: "Unity 插件源码 ZIP", url: "https://github.com/LeoWalker023/lnspiration-unity-plugins/archive/refs/heads/main.zip" }]
   },
   {
-    id: "dependencyfinder", name: "依赖检索器", fullName: "Spark Dependency Explorer", version: "1.1.0", platforms: "Unity 2021.3+",
+    id: "dependencyfinder", name: "依赖检索器", fullName: "Spark Dependency Explorer", version: "1.1.0", platforms: "Unity 2021.3+", category: "unity", releaseDateISO: "2026-08-11",
     description: "拖入资产或文件夹，同时查看它依赖了什么、又被哪些资源引用。正向与反向检索、代码引用定位和删除预览，让项目清理更清晰、更安全。",
     releaseDate: "2026 年 8 月 11 日", releaseTitle: "Spark Dependency Explorer 1.1.0",
     stories: [

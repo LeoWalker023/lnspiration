@@ -6,7 +6,7 @@
   const id = new URLSearchParams(location.search).get("product") || "airename";
   const p = (window.INSPIRATION_PRODUCTS || []).find((x) => x.id === id);
   const page = document.querySelector("#product-page");
-  if (!p) { page.innerHTML = '<section class="product-page-hero wrap"><h1>没有找到这个产品</h1><a class="button button-primary" href="index.html">返回首页</a></section>'; return; }
+  if (!p) { page.innerHTML = '<section class="product-page-hero wrap product-not-found"><p class="eyebrow">PRODUCT NOT FOUND</p><h1>没有找到这个产品</h1><p>链接可能已经更新，返回工具中心可以查看当前可用的产品。</p><a class="button button-primary" href="index.html#products">返回工具中心</a></section>'; return; }
   document.title = `${p.name} · lnspiration`;
   const isAirename = p.id === "airename";
   const isPlugin = p.id === "animationpathprotector";
@@ -19,7 +19,12 @@
   const features = (p.features || []).map((x) => `<li>${escape(x)}</li>`).join("");
   const audienceHtml = audience.map((x) => `<li>${escape(x)}</li>`).join("");
   const workflowHtml = workflow.map((x) => `<article><b>${x.n}</b><h3>${escape(x.t)}</h3><p>${escape(x.d)}</p></article>`).join("");
-  const assets = (p.assets || []).map((a) => `<a class="page-download" href="${escape(a.url)}" download><span><strong>${escape(a.label)}</strong><small>${escape(a.name)}</small></span><b>直接下载 ↓</b></a>`).join("");
+  const assets = (p.assets || []).map((a) => {
+    const extension = a.name.includes('.') ? a.name.split('.').pop().toUpperCase() : 'FILE';
+    let source = '外部仓库';
+    try { if (new URL(a.url).hostname.includes('github')) source = 'GitHub'; } catch {}
+    return `<a class="page-download" href="${escape(a.url)}" download><span><strong>${escape(a.label)}</strong><small>${escape(a.name)} · ${escape(extension)} · ${source}</small></span><b>直接下载 ↓</b></a>`;
+  }).join("");
   const installation = isDependency ? {
     path: "Packages/com.spark.dependency-explorer",
     entry: "Tools > Spark > 依赖检索器",
@@ -31,13 +36,15 @@
   } : null;
   const installationHtml = installation ? `<section class="install-section" id="install"><div class="wrap"><p class="eyebrow">安装到 Unity</p><h2>几步就能开始使用。</h2><div class="install-layout"><ol>${installation.steps.map((step) => `<li>${escape(step)}</li>`).join("")}</ol><div class="install-panel"><span>推荐路径</span><div class="copy-row"><code>${escape(installation.path)}</code><button class="copy-button" type="button" data-copy="${escape(installation.path)}">复制路径</button></div><span>打开方式</span><strong>${escape(installation.entry)}</strong></div></div></div></section>` : "";
   const detailNav = `<nav class="detail-nav" aria-label="产品详情章节"><div class="wrap"><a href="#overview">概览</a><a href="#workflow">工作流</a><a href="#stories">展示</a><a href="#features">功能</a>${installation ? '<a href="#install">安装</a>' : ''}<a href="#download">下载</a></div></nav>`;
+  const relatedProducts = (window.INSPIRATION_PRODUCTS || []).filter((item) => item.id !== p.id).sort((a, b) => Number(b.category === p.category) - Number(a.category === p.category) || String(b.releaseDateISO).localeCompare(String(a.releaseDateISO))).slice(0, 3);
+  const relatedHtml = `<section class="related-section"><div class="wrap"><p class="eyebrow">继续探索</p><h2>更多创作工具。</h2><div class="related-grid">${relatedProducts.map((item) => `<a href="product.html?product=${encodeURIComponent(item.id)}"><span>${escape(item.category === 'unity' ? 'UNITY 插件' : '桌面软件')}</span><strong>${escape(item.name)}</strong><small>${escape(item.platforms)} · v${escape(item.version)}</small><b aria-hidden="true">›</b></a>`).join('')}</div></div></section>`;
   const overviewTitle = isAirename ? "把重复整理，交给更聪明的工作流。" : isPlugin ? "修改结构，也不会丢失动画。" : isDependency ? "看见每一条关系，再决定去留。" : "让翻译成为工作流的一部分。";
   const overviewText = isAirename ? "从素材导入、命名规则到最终输出，Airename 把复杂的批处理拆成清晰可控的每一步。" : isPlugin ? "Animation Path Protector 让动画路径不再成为重构的负担。挂载到 Animator 后，节点层级、位置和名称都可以自由调整，插件会自动将动画重新接驳到正确路径。" : isDependency ? "Spark Dependency Explorer 把分散在项目中的依赖和引用整理成清晰的双向视图。无论是查找资源去向，还是清理废弃资产，都可以先确认关系与保护范围。" : "翻译虎不试图占据你的屏幕，它只在需要的时候出现，让语言转换像快捷键一样自然。";
   const workflowTitle = isAirename ? "从素材到结果，始终看得见。" : isPlugin ? "让层级自由变化，让动画持续工作。" : isDependency ? "从导入范围，到安全清理。" : "从唤出到理解，不必离开当前工作。";
   const featureTitle = isAirename ? "为批量创作而生。" : isPlugin ? "为 Unity 动画重构而生。" : isDependency ? "为项目维护与资源清理而生。" : "为轻快沟通而生。";
   const audienceTitle = isAirename ? "把时间还给创作。" : isPlugin ? "让动画重构不再受路径束缚。" : isDependency ? "让复杂项目重新变得可读。" : "让每个人都能快速理解。";
   const productKind = isPlugin || isDependency ? "Unity Editor 插件" : "独立桌面工具";
-  page.innerHTML = `<section class="product-page-hero"><div class="wrap"><p class="eyebrow">${escape(p.fullName)}</p><h1>${escape(heroTitle)}</h1><p>${escape(p.description)}</p><div class="hero-facts"><span>${escape(p.platforms)}</span><span>当前版本 v${escape(p.version)}</span><span>${productKind}</span></div><a class="button button-primary" href="${escape(p.assets[0].url)}" download>下载 v${escape(p.version)}</a></div></section>${detailNav}<section class="product-overview wrap detail-section" id="overview"><p class="eyebrow">为什么选择 ${escape(p.name)}</p><h2>${overviewTitle}</h2><p>${overviewText}</p></section><section class="workflow-section detail-section" id="workflow"><div class="wrap"><p class="eyebrow">简单四步</p><h2>${workflowTitle}</h2><div class="workflow-grid">${workflowHtml}</div></div></section><section class="product-stories wrap detail-section" id="stories">${stories || '<div class="story-empty"><p class="eyebrow">使用方式</p><h2>专注解决一个具体问题。</h2></div>'}</section><section class="feature-section detail-section" id="features"><div class="wrap"><p class="eyebrow">完整能力</p><h2>${featureTitle}</h2><ul>${features}</ul></div></section><section class="audience-section"><div class="wrap"><div><p class="eyebrow">适合谁</p><h2>${audienceTitle}</h2></div><ul>${audienceHtml}</ul></div></section>${installationHtml}<section class="page-downloads wrap detail-section" id="download"><p class="eyebrow">立即开始</p><h2>开始使用 ${escape(p.name)}</h2><p>${escape(p.platforms)} · v${escape(p.version)} · 发布于 ${escape(p.releaseDate)}</p><div>${assets}</div></section>`;
+  page.innerHTML = `<section class="product-page-hero"><div class="wrap"><p class="eyebrow">${escape(p.fullName)}</p><h1>${escape(heroTitle)}</h1><p>${escape(p.description)}</p><div class="hero-facts"><span>${escape(p.platforms)}</span><span>当前版本 v${escape(p.version)}</span><span>${productKind}</span></div><a class="button button-primary" href="${escape(p.assets[0].url)}" download>下载 v${escape(p.version)}</a></div></section>${detailNav}<section class="product-overview wrap detail-section" id="overview"><p class="eyebrow">为什么选择 ${escape(p.name)}</p><h2>${overviewTitle}</h2><p>${overviewText}</p></section><section class="workflow-section detail-section" id="workflow"><div class="wrap"><p class="eyebrow">简单四步</p><h2>${workflowTitle}</h2><div class="workflow-grid">${workflowHtml}</div></div></section><section class="product-stories wrap detail-section" id="stories">${stories || '<div class="story-empty"><p class="eyebrow">使用方式</p><h2>专注解决一个具体问题。</h2></div>'}</section><section class="feature-section detail-section" id="features"><div class="wrap"><p class="eyebrow">完整能力</p><h2>${featureTitle}</h2><ul>${features}</ul></div></section><section class="audience-section"><div class="wrap"><div><p class="eyebrow">适合谁</p><h2>${audienceTitle}</h2></div><ul>${audienceHtml}</ul></div></section>${installationHtml}${relatedHtml}<section class="page-downloads wrap detail-section" id="download"><p class="eyebrow">立即开始</p><h2>开始使用 ${escape(p.name)}</h2><p>${escape(p.platforms)} · v${escape(p.version)} · 发布于 ${escape(p.releaseDate)}</p><div>${assets}</div></section>`;
   const returnLink = document.querySelector('[data-return-home]');
   returnLink?.addEventListener('click', (event) => {
     sessionStorage.setItem('lnspirationRestoreScroll', '1');
@@ -57,6 +64,12 @@
     navItems.forEach((item) => item.link.classList.toggle('is-active', item === current));
   };
   if (navItems.length) { window.addEventListener('scroll', updateDetailNav, { passive: true }); updateDetailNav(); }
+  const prefetchedProducts = new Set();
+  document.querySelectorAll('.related-grid a').forEach((link) => {
+    const prefetch = () => { if (prefetchedProducts.has(link.href)) return; prefetchedProducts.add(link.href); const hint = document.createElement('link'); hint.rel = 'prefetch'; hint.href = link.href; document.head.appendChild(hint); };
+    link.addEventListener('pointerenter', prefetch, { once: true });
+    link.addEventListener('focus', prefetch, { once: true });
+  });
 
   const toast = document.createElement('div');
   toast.className = 'interaction-toast';
