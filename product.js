@@ -20,13 +20,96 @@
   const audienceHtml = audience.map((x) => `<li>${escape(x)}</li>`).join("");
   const workflowHtml = workflow.map((x) => `<article><b>${x.n}</b><h3>${escape(x.t)}</h3><p>${escape(x.d)}</p></article>`).join("");
   const assets = (p.assets || []).map((a) => `<a class="page-download" href="${escape(a.url)}" download><span><strong>${escape(a.label)}</strong><small>${escape(a.name)}</small></span><b>直接下载 ↓</b></a>`).join("");
+  const installation = isDependency ? {
+    path: "Packages/com.spark.dependency-explorer",
+    entry: "Tools > Spark > 依赖检索器",
+    steps: ["下载并解压 Unity-Dependency-Finder.zip。", "将 com.spark.dependency-explorer 文件夹复制到 Unity 项目根目录的 Packages 文件夹。", "重新打开或聚焦 Unity，等待 Package Manager 完成导入。"]
+  } : isPlugin ? {
+    path: "Assets/Plugins/AnimationPathProtector/AnimationPathProtector.cs",
+    entry: "在 Animator 对象上添加 Animation Path Protector 组件",
+    steps: ["下载并解压插件 ZIP。", "将 AnimationPathProtector.cs 放入 Unity 项目的 Assets 目录。", "等待脚本编译完成，再把组件挂载到包含 Animator 的对象。"]
+  } : null;
+  const installationHtml = installation ? `<section class="install-section" id="install"><div class="wrap"><p class="eyebrow">安装到 Unity</p><h2>几步就能开始使用。</h2><div class="install-layout"><ol>${installation.steps.map((step) => `<li>${escape(step)}</li>`).join("")}</ol><div class="install-panel"><span>推荐路径</span><div class="copy-row"><code>${escape(installation.path)}</code><button class="copy-button" type="button" data-copy="${escape(installation.path)}">复制路径</button></div><span>打开方式</span><strong>${escape(installation.entry)}</strong></div></div></div></section>` : "";
+  const detailNav = `<nav class="detail-nav" aria-label="产品详情章节"><div class="wrap"><a href="#overview">概览</a><a href="#workflow">工作流</a><a href="#stories">展示</a><a href="#features">功能</a>${installation ? '<a href="#install">安装</a>' : ''}<a href="#download">下载</a></div></nav>`;
   const overviewTitle = isAirename ? "把重复整理，交给更聪明的工作流。" : isPlugin ? "修改结构，也不会丢失动画。" : isDependency ? "看见每一条关系，再决定去留。" : "让翻译成为工作流的一部分。";
   const overviewText = isAirename ? "从素材导入、命名规则到最终输出，Airename 把复杂的批处理拆成清晰可控的每一步。" : isPlugin ? "Animation Path Protector 让动画路径不再成为重构的负担。挂载到 Animator 后，节点层级、位置和名称都可以自由调整，插件会自动将动画重新接驳到正确路径。" : isDependency ? "Spark Dependency Explorer 把分散在项目中的依赖和引用整理成清晰的双向视图。无论是查找资源去向，还是清理废弃资产，都可以先确认关系与保护范围。" : "翻译虎不试图占据你的屏幕，它只在需要的时候出现，让语言转换像快捷键一样自然。";
   const workflowTitle = isAirename ? "从素材到结果，始终看得见。" : isPlugin ? "让层级自由变化，让动画持续工作。" : isDependency ? "从导入范围，到安全清理。" : "从唤出到理解，不必离开当前工作。";
   const featureTitle = isAirename ? "为批量创作而生。" : isPlugin ? "为 Unity 动画重构而生。" : isDependency ? "为项目维护与资源清理而生。" : "为轻快沟通而生。";
   const audienceTitle = isAirename ? "把时间还给创作。" : isPlugin ? "让动画重构不再受路径束缚。" : isDependency ? "让复杂项目重新变得可读。" : "让每个人都能快速理解。";
   const productKind = isPlugin || isDependency ? "Unity Editor 插件" : "独立桌面工具";
-  page.innerHTML = `<section class="product-page-hero"><div class="wrap"><p class="eyebrow">${escape(p.fullName)}</p><h1>${escape(heroTitle)}</h1><p>${escape(p.description)}</p><div class="hero-facts"><span>${escape(p.platforms)}</span><span>当前版本 v${escape(p.version)}</span><span>${productKind}</span></div><a class="button button-primary" href="${escape(p.assets[0].url)}" download>下载 v${escape(p.version)}</a></div></section><section class="product-overview wrap"><p class="eyebrow">为什么选择 ${escape(p.name)}</p><h2>${overviewTitle}</h2><p>${overviewText}</p></section><section class="workflow-section"><div class="wrap"><p class="eyebrow">简单四步</p><h2>${workflowTitle}</h2><div class="workflow-grid">${workflowHtml}</div></div></section><section class="product-stories wrap">${stories}</section><section class="feature-section"><div class="wrap"><p class="eyebrow">完整能力</p><h2>${featureTitle}</h2><ul>${features}</ul></div></section><section class="audience-section"><div class="wrap"><div><p class="eyebrow">适合谁</p><h2>${audienceTitle}</h2></div><ul>${audienceHtml}</ul></div></section><section class="page-downloads wrap"><p class="eyebrow">立即开始</p><h2>开始使用 ${escape(p.name)}</h2><p>${escape(p.platforms)} · v${escape(p.version)} · 发布于 ${escape(p.releaseDate)}</p><div>${assets}</div></section>`;
-  const revealItems = document.querySelectorAll('.page-story'); if ('IntersectionObserver' in window) { const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }), { threshold: .14 }); revealItems.forEach((item) => observer.observe(item)); } else revealItems.forEach((item) => item.classList.add('is-visible'));
-  const lightbox = document.createElement('div'); lightbox.className='image-lightbox'; lightbox.innerHTML='<button type="button" aria-label="关闭图片">×</button><img alt="">'; document.body.appendChild(lightbox); const lightboxImage=lightbox.querySelector('img'); const closeLightbox=()=>lightbox.classList.remove('open'); document.querySelectorAll('.page-story figure.zoomable').forEach((figure)=>figure.addEventListener('click',()=>{const img=figure.querySelector('img');lightboxImage.src=img.src;lightboxImage.alt=img.alt;lightbox.classList.add('open')})); lightbox.addEventListener('click',(event)=>{if(event.target===lightbox||event.target.tagName==='BUTTON')closeLightbox()}); document.addEventListener('keydown',(event)=>{if(event.key==='Escape')closeLightbox()});
+  page.innerHTML = `<section class="product-page-hero"><div class="wrap"><p class="eyebrow">${escape(p.fullName)}</p><h1>${escape(heroTitle)}</h1><p>${escape(p.description)}</p><div class="hero-facts"><span>${escape(p.platforms)}</span><span>当前版本 v${escape(p.version)}</span><span>${productKind}</span></div><a class="button button-primary" href="${escape(p.assets[0].url)}" download>下载 v${escape(p.version)}</a></div></section>${detailNav}<section class="product-overview wrap detail-section" id="overview"><p class="eyebrow">为什么选择 ${escape(p.name)}</p><h2>${overviewTitle}</h2><p>${overviewText}</p></section><section class="workflow-section detail-section" id="workflow"><div class="wrap"><p class="eyebrow">简单四步</p><h2>${workflowTitle}</h2><div class="workflow-grid">${workflowHtml}</div></div></section><section class="product-stories wrap detail-section" id="stories">${stories || '<div class="story-empty"><p class="eyebrow">使用方式</p><h2>专注解决一个具体问题。</h2></div>'}</section><section class="feature-section detail-section" id="features"><div class="wrap"><p class="eyebrow">完整能力</p><h2>${featureTitle}</h2><ul>${features}</ul></div></section><section class="audience-section"><div class="wrap"><div><p class="eyebrow">适合谁</p><h2>${audienceTitle}</h2></div><ul>${audienceHtml}</ul></div></section>${installationHtml}<section class="page-downloads wrap detail-section" id="download"><p class="eyebrow">立即开始</p><h2>开始使用 ${escape(p.name)}</h2><p>${escape(p.platforms)} · v${escape(p.version)} · 发布于 ${escape(p.releaseDate)}</p><div>${assets}</div></section>`;
+  const returnLink = document.querySelector('[data-return-home]');
+  returnLink?.addEventListener('click', (event) => {
+    sessionStorage.setItem('lnspirationRestoreScroll', '1');
+    try {
+      const referrer = new URL(document.referrer);
+      const homePath = location.pathname.replace(/product\.html$/, '');
+      const cameFromHome = referrer.origin === location.origin && (referrer.pathname === homePath || referrer.pathname === `${homePath}index.html`);
+      if (cameFromHome) { event.preventDefault(); history.back(); }
+    } catch {}
+  });
+
+  const navItems = [...document.querySelectorAll('.detail-nav a')].map((link) => ({ link, section: document.querySelector(link.getAttribute('href')) })).filter((item) => item.section);
+  const updateDetailNav = () => {
+    let current = navItems[0];
+    navItems.forEach((item) => { if (item.section.getBoundingClientRect().top <= 145) current = item; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8) current = navItems.at(-1);
+    navItems.forEach((item) => item.link.classList.toggle('is-active', item === current));
+  };
+  if (navItems.length) { window.addEventListener('scroll', updateDetailNav, { passive: true }); updateDetailNav(); }
+
+  const toast = document.createElement('div');
+  toast.className = 'interaction-toast';
+  toast.setAttribute('role', 'status');
+  document.body.appendChild(toast);
+  let toastTimer;
+  const showToast = (message) => { toast.textContent = message; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); };
+  document.querySelectorAll('a[download]').forEach((link) => link.addEventListener('click', () => showToast('正在准备下载…')));
+  document.querySelectorAll('[data-copy]').forEach((button) => button.addEventListener('click', async () => {
+    const value = button.dataset.copy;
+    try {
+      await navigator.clipboard.writeText(value);
+    } catch {
+      const input = document.createElement('textarea'); input.value = value; input.style.position = 'fixed'; input.style.opacity = '0'; document.body.appendChild(input); input.select(); document.execCommand('copy'); input.remove();
+    }
+    button.textContent = '已复制'; showToast('安装路径已复制'); setTimeout(() => { button.textContent = '复制路径'; }, 1600);
+  }));
+
+  const revealItems = document.querySelectorAll('.page-story');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }), { threshold: .14 });
+    revealItems.forEach((item) => observer.observe(item));
+  } else revealItems.forEach((item) => item.classList.add('is-visible'));
+
+  const gallery = [...document.querySelectorAll('.page-story figure.zoomable')];
+  if (gallery.length) {
+    const lightbox = document.createElement('div');
+    lightbox.className = 'image-lightbox';
+    lightbox.setAttribute('role', 'dialog');
+    lightbox.setAttribute('aria-modal', 'true');
+    lightbox.setAttribute('aria-label', '产品图片预览');
+    lightbox.innerHTML = '<button class="lightbox-close" type="button" aria-label="关闭图片">×</button><button class="lightbox-nav lightbox-prev" type="button" aria-label="上一张">‹</button><img alt=""><button class="lightbox-nav lightbox-next" type="button" aria-label="下一张">›</button><span class="lightbox-count"></span>';
+    document.body.appendChild(lightbox);
+    const lightboxImage = lightbox.querySelector('img');
+    const count = lightbox.querySelector('.lightbox-count');
+    const previous = lightbox.querySelector('.lightbox-prev');
+    const next = lightbox.querySelector('.lightbox-next');
+    let currentImage = 0;
+    let previousFocus;
+    const showImage = (index) => {
+      currentImage = (index + gallery.length) % gallery.length;
+      const image = gallery[currentImage].querySelector('img');
+      lightboxImage.src = image.src; lightboxImage.alt = image.alt;
+      count.textContent = `${currentImage + 1} / ${gallery.length}`;
+      previous.hidden = next.hidden = gallery.length < 2;
+    };
+    const openLightbox = (index) => { previousFocus = document.activeElement; showImage(index); lightbox.classList.add('open'); document.body.classList.add('dialog-open'); lightbox.querySelector('.lightbox-close').focus(); };
+    const closeLightbox = () => { lightbox.classList.remove('open'); document.body.classList.remove('dialog-open'); previousFocus?.focus(); };
+    gallery.forEach((figure, index) => { figure.tabIndex = 0; figure.setAttribute('role', 'button'); figure.setAttribute('aria-label', `放大查看图片 ${index + 1}`); figure.addEventListener('click', () => openLightbox(index)); figure.addEventListener('keydown', (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openLightbox(index); } }); });
+    lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+    previous.addEventListener('click', () => showImage(currentImage - 1));
+    next.addEventListener('click', () => showImage(currentImage + 1));
+    lightbox.addEventListener('click', (event) => { if (event.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (event) => { if (!lightbox.classList.contains('open')) return; if (event.key === 'Escape') closeLightbox(); if (event.key === 'ArrowLeft') showImage(currentImage - 1); if (event.key === 'ArrowRight') showImage(currentImage + 1); });
+  }
 })();

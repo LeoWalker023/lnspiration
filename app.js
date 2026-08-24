@@ -11,7 +11,7 @@
   const nav = document.querySelector('.nav'); if (nav && !nav.querySelector('.nav-explore')) { const actions = document.createElement('div'); actions.className = 'nav-actions'; actions.innerHTML = '<a class="nav-download" href="#downloads">获取工具</a><a class="nav-explore" href="https://homer79980.github.io/ps-slicer.html" target="_blank" rel="noopener noreferrer">探索更多</a>'; const old = nav.querySelector('.nav-download'); old?.remove(); nav.appendChild(actions); }
 
   const style = document.createElement('style');
-  style.textContent = `.site-header{position:sticky;top:0;background:#000d;backdrop-filter:blur(18px);z-index:5}.nav-links a{transition:color .2s ease}.nav-links a.is-active{color:#fff}.product-card{transition:transform .35s ease,box-shadow .35s ease}.product-card:hover{transform:translateY(-5px);box-shadow:0 30px 80px #000b}.product-card:hover .product-visual>div{transform:scale(1.025)}.product-visual>div{transition:transform .45s ease}.download-card{transition:transform .25s ease,border-color .25s ease}.download-card:hover{transform:translateY(-3px);border-color:#526f9d}.download-toast{position:fixed;left:50%;bottom:26px;z-index:20;transform:translate(-50%,20px);opacity:0;background:#f5f5f7;color:#111;padding:11px 16px;border-radius:999px;font-size:13px;transition:opacity .2s,transform .2s}.download-toast.show{opacity:1;transform:translate(-50%,0)}`;
+  style.textContent = `.site-header{position:sticky;top:0;background:#000d;backdrop-filter:blur(18px);z-index:5}.nav-links a{transition:color .2s ease}.nav-links a.is-active{color:#fff}.product-card{cursor:pointer;transition:transform .35s ease,box-shadow .35s ease}.product-card:hover{transform:translateY(-5px);box-shadow:0 30px 80px #000b}.product-card .text-link:focus-visible{outline:2px solid var(--blue);outline-offset:5px}.product-card:hover .product-visual>div{transform:scale(1.025)}.product-visual>div{transition:transform .45s ease}.download-card{transition:transform .25s ease,border-color .25s ease}.download-card:hover{transform:translateY(-3px);border-color:#526f9d}.download-toast{position:fixed;left:50%;bottom:26px;z-index:20;transform:translate(-50%,20px);opacity:0;background:#f5f5f7;color:#111;padding:11px 16px;border-radius:999px;font-size:13px;transition:opacity .2s,transform .2s}.download-toast.show{opacity:1;transform:translate(-50%,0)}`;
   style.textContent += '.nav-actions{display:flex;align-items:center;gap:18px}.nav-explore{display:inline-flex;align-items:center;border:1px solid #3b6fa7;border-radius:7px;padding:7px 13px;color:#f5f5f7;background:#132a43;transition:background .2s,border-color .2s}.nav-explore:hover{background:#1d4b78;border-color:#5b9cdd}@media(max-width:720px){.nav-actions .nav-download{display:none}.nav-actions{gap:0}}';
   document.head.appendChild(style);
 
@@ -27,6 +27,23 @@
   const pluginStyle = document.createElement('style');
   pluginStyle.textContent = '.plugin-visual{background:linear-gradient(145deg,#3d2b69,#151b3d)}.plugin-screen{width:68%;display:grid;gap:14px;padding:24px;border:1px solid #ffffff22;border-radius:16px;background:#17172aee;box-shadow:0 25px 55px #0008}.plugin-screen span{color:#9694bd;font-size:11px}.plugin-screen strong{font-size:20px}.plugin-screen small{color:#a9a7c7}.plugin-screen button{border:0;border-radius:7px;background:#6755da;color:#fff;padding:9px;font-size:12px}.dependency-visual{background:linear-gradient(145deg,#173d3b,#111d27)}.dependency-screen{width:78%;padding:18px;border:1px solid #ffffff20;border-radius:12px;background:#16191d;box-shadow:0 25px 55px #0008}.dependency-toolbar{display:flex;align-items:center;gap:8px;padding-bottom:13px;border-bottom:1px solid #30363d;font-size:10px;color:#7e8a94}.dependency-toolbar span{margin-right:auto;color:#e4e8eb;font-weight:600}.dependency-toolbar b,.dependency-toolbar i{padding:5px 7px;border-radius:5px;font-style:normal;font-weight:500}.dependency-toolbar b{background:#237b73;color:#e9fffb}.dependency-columns{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:12px 0}.dependency-columns>div{display:grid;gap:6px;padding:10px;background:#20252a;border-radius:7px}.dependency-columns small{color:#7c8992;font-size:9px}.dependency-columns strong{font-size:11px;color:#f2f4f5}.dependency-columns span{padding:6px;background:#292f35;border-radius:4px;color:#aeb8bf;font-size:9px}.dependency-status{color:#72cfc0;font-size:9px;text-align:right}@media(max-width:720px){.dependency-screen{width:84%}}';
   document.head.appendChild(pluginStyle);
+
+  const rememberHomePosition = () => sessionStorage.setItem('lnspirationHomeScroll', String(window.scrollY));
+  document.querySelectorAll('.product-card').forEach((card) => {
+    const detailLink = card.querySelector('a[href^="product.html?product="]');
+    if (!detailLink) return;
+    detailLink.addEventListener('click', rememberHomePosition);
+    const openDetail = () => { rememberHomePosition(); window.location.href = detailLink.href; };
+    card.addEventListener('click', (event) => { if (!event.target.closest('a,button,input,select,textarea')) openDetail(); });
+  });
+  const restoreHomePosition = () => {
+    if (sessionStorage.getItem('lnspirationRestoreScroll') !== '1') return;
+    sessionStorage.removeItem('lnspirationRestoreScroll');
+    const saved = Number(sessionStorage.getItem('lnspirationHomeScroll'));
+    if (Number.isFinite(saved)) requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo(0, saved)));
+  };
+  window.addEventListener('pageshow', restoreHomePosition);
+  restoreHomePosition();
 
   const grid = document.querySelector('#download-grid');
   if (grid) {
