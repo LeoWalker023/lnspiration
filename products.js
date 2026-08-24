@@ -28,5 +28,16 @@ window.INSPIRATION_PRODUCTS = [
     releaseDate: "2026 年 8 月 24 日", releaseTitle: "Animation Path Protector 1.0.0",
     features: ["在 Animator 对象上挂载 Animation Path Protector", "持续监视动画涉及的子节点和层级路径", "修改节点位置、层级或名称后自动重新接驳动画", "Inspector 显示当前监视的节点数量与保护状态", "支持刷新节点快照并记录 Unity Undo", "轻量 C# 编辑器插件，不增加运行时依赖"],
     assets: [{ name: "lnspiration-unity-plugins-main.zip", label: "Unity 插件源码 ZIP", url: "https://github.com/LeoWalker023/lnspiration-unity-plugins/archive/refs/heads/main.zip" }]
+  },
+  {
+    id: "dependencyfinder", name: "依赖检索器", fullName: "Spark Dependency Explorer", version: "1.1.0", platforms: "Unity 2021.3+",
+    description: "拖入资产或文件夹，同时查看它依赖了什么、又被哪些资源引用。正向与反向检索、代码引用定位和删除预览，让项目清理更清晰、更安全。",
+    releaseDate: "2026 年 8 月 11 日", releaseTitle: "Spark Dependency Explorer 1.1.0",
+    stories: [
+      { title: "依赖与引用，在同一个工作台里", text: "左侧保留来源资产的导入层级，右侧随当前选择展示正向依赖或反向引用。直接与递归模式可以随时切换，图片资源还会显示真实缩略图。", visual: "dependency-workbench" },
+      { title: "删除之前，先把边界看清楚", text: "逐项选择来源和专用依赖，在预览中确认最终清单。共享依赖、代码资产、Packages 资源和 Unity 内置资源都有明确的保护策略。", visual: "dependency-delete" }
+    ],
+    features: ["拖入预制体、材质、场景、代码、文件夹或其他 Unity 资产", "切换正向依赖与反向引用，并支持直接或递归检索", "识别直接引用、间接引用和 C# 代码引用候选位置", "按资源名称、缩略图或定位按钮在 Project 窗口中定位", "删除前预览最终清单，并保留仍被使用的共享依赖", "Packages、Unity 内置资源和代码资产默认受到保护"],
+    assets: [{ name: "Unity-Dependency-Finder.zip", label: "Unity 插件 ZIP", url: "https://github.com/LeoWalker023/lnspiration-unity-plugins/raw/refs/heads/main/dependency-finder/Unity-Dependency-Finder.zip" }]
   }
 ];
