@@ -3,9 +3,19 @@
   const escape = (value) => String(value).replace(/[&<>'"]/g, (char) => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"})[char]);
   const heroEyebrow = document.querySelector('.hero .eyebrow');
   const heroSummary = document.querySelector('.hero-summary');
+  document.querySelector('.hero-glass')?.remove();
+  const heroTitle = document.querySelector('.hero h1');
+  if (heroTitle) heroTitle.textContent = '让创作  更从容';
+  // Preview: keep large display headings clean and typography-led by removing punctuation.
+  document.querySelectorAll('.hero h1, .statement h2, .product-card h2, .downloads h2').forEach((heading) => {
+    const walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);
+    const textNodes = [];
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+    textNodes.forEach((node) => { node.textContent = node.textContent.replace(/[，。！？、：；“”‘’（）《》]/g, ''); });
+  });
   const description = document.querySelector('meta[name="description"]');
   if (heroEyebrow) heroEyebrow.textContent = '为创作者打造的工具生态。';
-  if (heroSummary) heroSummary.textContent = '软件、插件与工作流扩展，帮助你减少重复操作，把更多时间留给想法本身。';
+  if (heroSummary) heroSummary.textContent = 'Airename 和翻译虎，两个真正懂创作者的工具。更少重复操作，更多时间留给想法本身。';
   if (description) description.content = 'lnspiration：为创作者打造的软件、插件与工作流扩展生态。';
   document.querySelectorAll('.nav-links a').forEach((link) => { if (link.textContent.trim() === '关于 lnspiration') link.href = 'about.html'; });
   const nav = document.querySelector('.nav'); if (nav && !nav.querySelector('.nav-explore')) { const actions = document.createElement('div'); actions.className = 'nav-actions'; actions.innerHTML = '<a class="nav-download" href="#downloads">获取工具</a><a class="nav-explore" href="https://homer79980.github.io/ps-slicer.html" target="_blank" rel="noopener noreferrer">探索更多</a>'; const old = nav.querySelector('.nav-download'); old?.remove(); nav.appendChild(actions); }
@@ -24,6 +34,19 @@
   if (productsSection && dependency && !productsSection.querySelector('[data-dependency-card]')) {
     productsSection.insertAdjacentHTML('beforeend', `<article class="product-card reverse dependency-card" data-dependency-card><div class="product-copy"><p class="eyebrow">UNITY EDITOR PLUGIN</p><h2>理清依赖，<br>再安全清理。</h2><p class="product-name">${escape(dependency.name)}</p><p class="description">${escape(dependency.description)}</p><ul>${dependency.features.slice(0,4).map((item) => `<li>${escape(item)}</li>`).join('')}</ul><a class="text-link" href="product.html?product=dependencyfinder">进一步了解</a></div><div class="product-visual dependency-visual"><div class="dependency-screen"><div class="dependency-toolbar"><span>依赖检索器</span><b>正向依赖</b><i>反向引用</i></div><div class="dependency-columns"><div><small>来源资产</small><strong>Player.prefab</strong><span>Materials</span><span>Scripts</span></div><div><small>依赖结果</small><strong>Player.mat</strong><span>PlayerController.cs</span><span>Character.png</span></div></div><div class="dependency-status">已保护共享依赖　3</div></div></div></article>`);
   }
+  const displayHeadings = document.querySelectorAll('.product-card h2');
+  if (displayHeadings[0]) displayHeadings[0].innerHTML = '命名从此<br>有章可循';
+  if (displayHeadings[1]) displayHeadings[1].innerHTML = '一句话抵达<br>更远的地方';
+  if (displayHeadings[2]) displayHeadings[2].innerHTML = '让动画路径<br>保持可靠';
+  if (displayHeadings[3]) displayHeadings[3].innerHTML = '理清依赖<br>再安全清理';
+  const statementTitle = document.querySelector('.statement h2');
+  if (statementTitle) statementTitle.innerHTML = '工具不该制造负担<br><span>它应该把复杂变得安静</span>';
+  document.querySelectorAll('.hero h1, .statement h2, .product-card h2, .downloads h2').forEach((heading) => {
+    const walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);
+    const textNodes = [];
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+    textNodes.forEach((node) => { node.textContent = node.textContent.replace(/[，。！？、：；“”‘’（）《》]/g, ''); });
+  });
   const pluginStyle = document.createElement('style');
   pluginStyle.textContent = '.plugin-visual{background:linear-gradient(145deg,#3d2b69,#151b3d)}.plugin-screen{width:68%;display:grid;gap:14px;padding:24px;border:1px solid #ffffff22;border-radius:16px;background:#17172aee;box-shadow:0 25px 55px #0008}.plugin-screen span{color:#9694bd;font-size:11px}.plugin-screen strong{font-size:20px}.plugin-screen small{color:#a9a7c7}.plugin-screen button{border:0;border-radius:7px;background:#6755da;color:#fff;padding:9px;font-size:12px}.dependency-visual{background:linear-gradient(145deg,#173d3b,#111d27)}.dependency-screen{width:78%;padding:18px;border:1px solid #ffffff20;border-radius:12px;background:#16191d;box-shadow:0 25px 55px #0008}.dependency-toolbar{display:flex;align-items:center;gap:8px;padding-bottom:13px;border-bottom:1px solid #30363d;font-size:10px;color:#7e8a94}.dependency-toolbar span{margin-right:auto;color:#e4e8eb;font-weight:600}.dependency-toolbar b,.dependency-toolbar i{padding:5px 7px;border-radius:5px;font-style:normal;font-weight:500}.dependency-toolbar b{background:#237b73;color:#e9fffb}.dependency-columns{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:12px 0}.dependency-columns>div{display:grid;gap:6px;padding:10px;background:#20252a;border-radius:7px}.dependency-columns small{color:#7c8992;font-size:9px}.dependency-columns strong{font-size:11px;color:#f2f4f5}.dependency-columns span{padding:6px;background:#292f35;border-radius:4px;color:#aeb8bf;font-size:9px}.dependency-status{color:#72cfc0;font-size:9px;text-align:right}@media(max-width:720px){.dependency-screen{width:84%}}';
   document.head.appendChild(pluginStyle);
