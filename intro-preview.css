@@ -1,0 +1,9 @@
+.intro-screen{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:#050506;color:#f5f5f7;opacity:1;transition:none;pointer-events:auto;animation:intro-appear .5s ease 0s both}
+.intro-screen.is-leaving{animation:intro-exit .7s ease forwards;pointer-events:none}
+.intro-word{width:min(760px,82vw);height:auto;overflow:visible}
+.intro-word text{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;font-size:116px;font-weight:600;letter-spacing:-6px;fill:transparent;stroke:#f5f5f7;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:100;stroke-dashoffset:100;animation:intro-letter-draw 1.25s linear 0s both,intro-letter-fill .6s ease .95s both}
+@keyframes intro-letter-draw{to{stroke-dashoffset:0}}
+@keyframes intro-letter-fill{to{fill:#f5f5f7;stroke:transparent}}
+@keyframes intro-appear{from{opacity:0}to{opacity:1}}
+@keyframes intro-exit{from{opacity:1}to{opacity:0}}
+@media(prefers-reduced-motion:reduce){.intro-screen{transition:none}.intro-word text{animation:none;fill:#f5f5f7;stroke:transparent}}

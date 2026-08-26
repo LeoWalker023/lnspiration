@@ -11,16 +11,16 @@ window.INSPIRATION_PRODUCTS = [
     assets: [{ name: "AI-Rename-Pro-Studio-2.0.5.exe", label: "Windows 安装包", url: "https://github.com/LeoWalker023/AI-Rename-Pro-Studio-Releases/releases/download/v2.0.5/AI-Rename-Pro-Studio-2.0.5.exe" }, { name: "AI-Rename-Pro-Studio-2.0.5.exe.sha256", label: "SHA-256 校验文件", url: "https://github.com/LeoWalker023/AI-Rename-Pro-Studio-Releases/releases/download/v2.0.5/AI-Rename-Pro-Studio-2.0.5.exe.sha256" }]
   },
   {
-    id: "linguatype", name: "翻译虎", fullName: "LinguaType", version: "1.1.6", platforms: "Windows · macOS", category: "software", releaseDateISO: "2026-08-18",
+    id: "linguatype", name: "翻译虎", fullName: "LinguaType", version: "1.1.7", platforms: "Windows · macOS", category: "software", releaseDateISO: "2026-08-25",
     description: "轻量、快捷的桌面翻译工具。按下快捷键即可呼出，常驻托盘而不打断当前工作，适合阅读、沟通和每天遇到的语言切换。",
-    releaseDate: "2026 年 8 月 18 日", releaseTitle: "LinguaType 1.1.6",
+    releaseDate: "2026 年 8 月 25 日", releaseTitle: "LinguaType 1.1.7",
     stories: [
-      { title: "需要时出现，不打断工作", text: "翻译虎常驻系统托盘。你可以从托盘菜单快速打开翻译窗口、调整设置或检查更新，翻译能力始终在手边。", image: "assets/翻译虎-自绘托盘菜单-渲染图.png", alt: "翻译虎托盘菜单" },
-      { title: "快捷键，让翻译更自然", text: "设置全局快捷键后，无论你正在阅读网页、查看文档还是处理素材，都可以快速呼出翻译，不必反复切换窗口。", image: "assets/翻译虎-快捷键状态单行左对齐预览.png", alt: "翻译虎快捷键状态" },
-      { title: "更新提醒，也保持安静", text: "发现新版本时，翻译虎会用清晰的更新提醒告诉你变化。由你决定何时下载和安装，不被强制打断。", image: "assets/翻译虎-自绘更新提醒-屏幕预览.png", alt: "翻译虎更新提醒" }
+      { title: "新的图标，新的识别方式", text: "1.1.7 带来了全新的翻译虎图标。虎头造型与醒目的橙黑配色，让软件在桌面、任务栏和系统托盘中更容易被识别。", image: "assets/翻译虎-新版图标.png", alt: "翻译虎 1.1.7 新版虎头图标" },
+      { title: "外观，按你的工作环境调整", text: "在外观页面中选择预设主题、深浅模式、强调色、进度条颜色和悬浮窗透明度，让翻译窗口自然融入当前桌面。", image: "assets/翻译虎-新版外观设置.png", alt: "翻译虎新版外观设置界面" },
+      { title: "输入之后，状态清晰可见", text: "实时预览会展示输入、翻译和进度状态。界面动画可以随时关闭，既保持反馈清晰，也尊重不同的使用习惯。", image: "assets/翻译虎-新版翻译预览.png", alt: "翻译虎新版翻译状态预览" }
     ],
     features: ["全局快捷键，随时呼出翻译", "托盘常驻，不占用工作区", "多种翻译服务灵活切换", "清晰的更新提醒与版本管理", "支持 Windows 与 macOS"],
-    assets: [{ name: "LinguaType-1.1.6.exe", label: "Windows 安装包", url: "https://github.com/LeoWalker023/LinguaType-Releases/releases/download/v1.1.6/LinguaType-1.1.6.exe" }]
+    assets: [{ name: "LinguaType-1.1.7.exe", label: "Windows 安装包", url: "https://github.com/LeoWalker023/LinguaType-Releases/releases/download/v1.1.7/LinguaType-1.1.7.exe" }, { name: "LinguaType-1.1.7.exe.sha256", label: "SHA-256 校验文件", url: "https://github.com/LeoWalker023/LinguaType-Releases/releases/download/v1.1.7/LinguaType-1.1.7.exe.sha256" }]
   },
   {
     id: "animationpathprotector", name: "Animation Path Protector", fullName: "Unity Editor Plugin", version: "1.0.0", platforms: "Unity 2021.3+", category: "unity", releaseDateISO: "2026-08-24",
