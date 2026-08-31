@@ -29,7 +29,7 @@
   });
   const description = document.querySelector('meta[name="description"]');
   if (heroEyebrow) heroEyebrow.textContent = '为创作者打造的工具生态。';
-  if (heroSummary) heroSummary.textContent = 'Airename 和翻译虎，两个真正懂创作者的工具。更少重复操作，更多时间留给想法本身。';
+  if (heroSummary) heroSummary.textContent = '真正懂创作者的工具集。更少重复操作，把更多时间留给想法本身。';
   if (description) description.content = 'lnspiration：为创作者打造的软件、插件与工作流扩展生态。';
   document.querySelectorAll('.nav-links a').forEach((link) => { if (link.textContent.trim() === '关于 lnspiration') link.href = 'about.html'; });
   const nav = document.querySelector('.nav'); if (nav && !nav.querySelector('.nav-explore')) { const actions = document.createElement('div'); actions.className = 'nav-actions'; actions.innerHTML = '<a class="nav-download" href="#downloads">获取工具</a><a class="nav-explore" href="https://homer79980.github.io/ps-slicer.html" target="_blank" rel="noopener noreferrer">探索更多</a>'; const old = nav.querySelector('.nav-download'); old?.remove(); nav.appendChild(actions); }
