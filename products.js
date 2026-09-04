@@ -39,5 +39,17 @@ window.INSPIRATION_PRODUCTS = [
     ],
     features: ["拖入预制体、材质、场景、代码、文件夹或其他 Unity 资产", "切换正向依赖与反向引用，并支持直接或递归检索", "识别直接引用、间接引用和 C# 代码引用候选位置", "按资源名称、缩略图或定位按钮在 Project 窗口中定位", "删除前预览最终清单，并保留仍被使用的共享依赖", "Packages、Unity 内置资源和代码资产默认受到保护"],
     assets: [{ name: "Unity-Dependency-Finder.zip", label: "Unity 插件 ZIP", url: "https://github.com/LeoWalker023/lnspiration-unity-plugins/raw/refs/heads/main/dependency-finder/Unity-Dependency-Finder.zip" }]
+  },
+  {
+    id: "imageview", name: "Image View", fullName: "Image View", version: "1.0.0", platforms: "Windows 10/11 · x64", category: "software", releaseDateISO: "2026-09-04",
+    description: "轻量、快速的 Windows 图片查看与格式转换工具。打开一张图片后即可浏览同目录素材，并在不改动原文件的前提下完成 PSD 预览和常见格式转换。",
+    releaseDate: "2026 年 9 月 4 日", releaseTitle: "Image View 1.0.0",
+    stories: [
+      { title: "打开图片，也打开整个文件夹", text: "从资源管理器双击图片或 PSD，Image View 会快速扫描同目录内容。缩略图栏、上一张/下一张和滚轮缩放，让浏览素材保持连贯。", visual: "imageview-browser" },
+      { title: "PSD 预览，不必打开 Photoshop", text: "直接查看 PSD 与 PSB 的最终合成效果，透明图像使用棋盘格背景，并尽量保留正确的方向与色彩显示。", visual: "imageview-psd" },
+      { title: "转换之前，先确认结果", text: "将 JPG、PNG、WebP、TIFF 或 PSD 导出为常用格式。支持质量、尺寸和输出目录设置，默认不覆盖原文件。", visual: "imageview-convert" }
+    ],
+    features: ["支持 JPG、JPEG、PNG、BMP、GIF、WebP、TIFF、PSD 与 PSB 预览", "同文件夹快速浏览、缩略图栏、缩放、旋转和全屏", "PSD/PSB 合成预览，不修改原始文件", "导出 PNG、JPEG、WebP，并支持批量转换", "拖拽到桌面或其他软件，支持文件信息面板", "Windows 10/11 x64 绿色便携版，无需额外安装 .NET"],
+    assets: [{ name: "ImageView-v1.0.0-win-x64.zip", label: "Windows 便携版 ZIP", url: "https://github.com/LeoWalker023/Image-View/releases/download/v1.0.0/ImageView-v1.0.0-win-x64.zip" }]
   }
 ];
