@@ -1,16 +1,12 @@
 (() => {
   const products = window.INSPIRATION_PRODUCTS || [];
-  const introLink = document.createElement('link');
-  introLink.rel = 'stylesheet';
-  introLink.href = 'intro-preview.css';
-  document.head.appendChild(introLink);
-  const intro = document.createElement('div');
+  const intro = document.querySelector('#intro-screen') || document.createElement('div');
   intro.className = 'intro-screen';
   intro.setAttribute('aria-label', 'Inspiration');
   const introPositions = [118, 169, 226, 286, 340, 385, 438, 490, 530, 584, 644];
   const introLetters = [...'Inspiration'].map((letter, index) => `<text class="intro-letter letter-${index}" x="${introPositions[index]}" y="112" text-anchor="middle" pathLength="100">${letter}</text>`).join('');
-  intro.innerHTML = `<svg class="intro-word" viewBox="0 0 760 150" role="img" aria-label="Inspiration">${introLetters}</svg>`;
-  document.body.appendChild(intro);
+  if (!intro.querySelector('.intro-word')) intro.innerHTML = `<svg class="intro-word" viewBox="0 0 760 150" role="img" aria-label="Inspiration">${introLetters}</svg>`;
+  if (!intro.isConnected) document.body.prepend(intro);
   const dismissIntro = () => { intro.classList.add('is-leaving'); setTimeout(() => intro.remove(), 700); };
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) dismissIntro();
   else setTimeout(dismissIntro, 1650);
