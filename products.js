@@ -51,5 +51,17 @@ window.INSPIRATION_PRODUCTS = [
     ],
     features: ["支持 JPG、JPEG、PNG、BMP、GIF、WebP、TIFF、PSD 与 PSB 预览", "同文件夹快速浏览、缩略图栏、缩放、旋转和全屏", "PSD/PSB 合成预览，不修改原始文件", "导出 PNG、JPEG、WebP，并支持批量转换", "拖拽到桌面或其他软件，支持文件信息面板", "Windows 10/11 x64 绿色便携版，无需额外安装 .NET"],
     assets: [{ name: "ImageView-v1.0.0-win-x64.zip", label: "Windows 便携版 ZIP", url: "https://github.com/LeoWalker023/Image-View/releases/download/v1.0.0/ImageView-v1.0.0-win-x64.zip" }]
+  },
+  {
+    id: "desktopvideoplayer", name: "Desktop Video Player", fullName: "DVP · Desktop Video Player", version: "1.0.0", platforms: "Windows 10/11 · x64", category: "software", releaseDateISO: "2026-09-08",
+    description: "面向本地视频检查的轻量桌面播放器。支持连续播放、逐帧前进后退、倍速、双视频左右对比和全屏查看，让视频检查保持准确而安静。",
+    releaseDate: "2026 年 9 月 8 日", releaseTitle: "Desktop Video Player 1.0.0", releasePage: "https://github.com/LeoWalker023/Desktop-Video-Player/releases/tag/v1.0.0",
+    stories: [
+      { title: "连续播放，也能随时停在细节上", text: "按原始时间轴播放本地 MP4、MKV 或 MOV，支持多档倍速和循环播放。暂停后可以继续从当前画面恢复，不打乱检查节奏。", visual: "videoplayer-playback" },
+      { title: "一帧一帧，准确找到画面", text: "使用时间轴最近帧定位、帧号输入和上一帧/下一帧操作。打开视频后先停在首帧，逐帧检查不会闪黑或跳过目标画面。", visual: "videoplayer-frame" },
+      { title: "两段视频，同一条时间轴", text: "同时拖入两个视频即可进入左右对比模式。时间轴按最长视频计算，较短视频停在最后一帧并标记结束，两侧保持清晰可比。", visual: "videoplayer-compare" }
+    ],
+    features: ["支持 MP4、MKV、MOV 等常见本地视频格式", "0.1× 到 4× 多档倍速与循环播放", "上一帧/下一帧、跳 10 帧、帧号输入和时间轴最近帧定位", "双视频左右对比，共用时间轴和逐帧控制", "显示帧率、分辨率、当前帧和时间码等媒体摘要", "Windows 10/11 x64 绿色便携版，离线运行并附带 FFmpeg 组件"],
+    assets: [{ name: "DesktopVideoPlayer-1.0.0-win-x64.zip", label: "Windows 便携版 ZIP", url: "https://github.com/LeoWalker023/Desktop-Video-Player/releases/download/v1.0.0/DesktopVideoPlayer-1.0.0-win-x64.zip" }]
   }
 ];
