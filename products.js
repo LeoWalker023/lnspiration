@@ -2,7 +2,7 @@ window.INSPIRATION_PRODUCTS = [
   {
     id: "airename", name: "Airename", fullName: "AI Rename Pro Studio", version: "2.0.5", platforms: "Windows", category: "software", releaseDateISO: "2026-08-20",
     description: "面向设计资产、游戏资源和图片素材的批量整理工具。导入素材，选择规则或 AI 命名方式，在实时预览中确认结果，再批量处理。",
-    releaseDate: "2026 年 8 月 20 日", releaseTitle: "AI Rename Pro Studio 2.0.5",
+    releaseDate: "2026 年 8 月 20 日", releaseTitle: "AI Rename Pro Studio 2.0.5", releasePage: "https://github.com/LeoWalker023/AI-Rename-Pro-Studio-Releases/releases/tag/v2.0.5",
     stories: [
       { title: "从导入到输出，一处完成", text: "左侧管理资产队列，中间设置命名规则，右侧调整格式与画布。所有结果都能在执行前预览。", image: "assets/AI-Rename-layout-preview-v3-actionbar.png", alt: "Airename 主界面" },
       { title: "让 AI 看懂你的素材", text: "接入支持视觉识别的模型后，AI 会根据图片内容、已有文件名、使用背景和参考图给出命名建议。", image: "assets/AI-Rename-API-Settings-Locked-Preview.png", alt: "Airename API 设置" }
@@ -11,16 +11,16 @@ window.INSPIRATION_PRODUCTS = [
     assets: [{ name: "AI-Rename-Pro-Studio-2.0.5.exe", label: "Windows 安装包", url: "https://github.com/LeoWalker023/AI-Rename-Pro-Studio-Releases/releases/download/v2.0.5/AI-Rename-Pro-Studio-2.0.5.exe" }, { name: "AI-Rename-Pro-Studio-2.0.5.exe.sha256", label: "SHA-256 校验文件", url: "https://github.com/LeoWalker023/AI-Rename-Pro-Studio-Releases/releases/download/v2.0.5/AI-Rename-Pro-Studio-2.0.5.exe.sha256" }]
   },
   {
-    id: "linguatype", name: "翻译虎", fullName: "LinguaType", version: "1.1.7", platforms: "Windows · macOS", category: "software", releaseDateISO: "2026-08-25",
+    id: "linguatype", name: "翻译虎", fullName: "LinguaType", version: "1.2.2", platforms: "Windows", category: "software", releaseDateISO: "2026-09-16",
     description: "轻量、快捷的桌面翻译工具。按下快捷键即可呼出，常驻托盘而不打断当前工作，适合阅读、沟通和每天遇到的语言切换。",
-    releaseDate: "2026 年 8 月 25 日", releaseTitle: "LinguaType 1.1.7",
+    releaseDate: "2026 年 9 月 16 日", releaseTitle: "LinguaType 1.2.2", releasePage: "https://github.com/LeoWalker023/LinguaType-Releases/releases/tag/v1.2.2",
     stories: [
-      { title: "新的图标，新的识别方式", text: "1.1.7 带来了全新的翻译虎图标。虎头造型与醒目的橙黑配色，让软件在桌面、任务栏和系统托盘中更容易被识别。", image: "assets/翻译虎-新版图标.png", alt: "翻译虎 1.1.7 新版虎头图标" },
+      { title: "新的图标，新的识别方式", text: "1.2.2 延续了全新的翻译虎图标。虎头造型与醒目的橙黑配色，让软件在桌面、任务栏和系统托盘中更容易被识别。", image: "assets/翻译虎-新版图标.png", alt: "翻译虎 1.2.2 新版虎头图标" },
       { title: "外观，按你的工作环境调整", text: "在外观页面中选择预设主题、深浅模式、强调色、进度条颜色和悬浮窗透明度，让翻译窗口自然融入当前桌面。", image: "assets/翻译虎-新版外观设置.png", alt: "翻译虎新版外观设置界面" },
       { title: "输入之后，状态清晰可见", text: "实时预览会展示输入、翻译和进度状态。界面动画可以随时关闭，既保持反馈清晰，也尊重不同的使用习惯。", image: "assets/翻译虎-新版翻译预览.png", alt: "翻译虎新版翻译状态预览" }
     ],
-    features: ["全局快捷键，随时呼出翻译", "托盘常驻，不占用工作区", "多种翻译服务灵活切换", "清晰的更新提醒与版本管理", "支持 Windows 与 macOS"],
-    assets: [{ name: "LinguaType-1.1.7.exe", label: "Windows 安装包", url: "https://github.com/LeoWalker023/LinguaType-Releases/releases/download/v1.1.7/LinguaType-1.1.7.exe" }, { name: "LinguaType-1.1.7.exe.sha256", label: "SHA-256 校验文件", url: "https://github.com/LeoWalker023/LinguaType-Releases/releases/download/v1.1.7/LinguaType-1.1.7.exe.sha256" }]
+    features: ["全局快捷键，随时呼出翻译", "托盘常驻，不占用工作区", "多种翻译服务灵活切换", "清晰的更新提醒与版本管理", "支持 Windows"],
+    assets: [{ name: "LinguaType-1.2.2.exe", label: "Windows 安装包", url: "https://github.com/LeoWalker023/LinguaType-Releases/releases/download/v1.2.2/LinguaType-1.2.2.exe" }, { name: "LinguaType-1.2.2.exe.sha256", label: "SHA-256 校验文件", url: "https://github.com/LeoWalker023/LinguaType-Releases/releases/download/v1.2.2/LinguaType-1.2.2.exe.sha256" }, { name: "LinguaTypeUpdater.exe", label: "Windows 更新器", url: "https://github.com/LeoWalker023/LinguaType-Releases/releases/download/v1.2.2/LinguaTypeUpdater.exe" }, { name: "LinguaTypeUpdater.exe.sha256", label: "更新器 SHA-256 校验文件", url: "https://github.com/LeoWalker023/LinguaType-Releases/releases/download/v1.2.2/LinguaTypeUpdater.exe.sha256" }]
   },
   {
     id: "animationpathprotector", name: "Animation Path Protector", fullName: "Unity Editor Plugin", version: "1.0.0", platforms: "Unity 2021.3+", category: "unity", releaseDateISO: "2026-08-24",
@@ -30,9 +30,9 @@ window.INSPIRATION_PRODUCTS = [
     assets: [{ name: "lnspiration-unity-plugins-main.zip", label: "Unity 插件源码 ZIP", url: "https://github.com/LeoWalker023/lnspiration-unity-plugins/archive/refs/heads/main.zip" }]
   },
   {
-    id: "dependencyfinder", name: "依赖检索器", fullName: "Spark Dependency Explorer", version: "1.1.0", platforms: "Unity 2021.3+", category: "unity", releaseDateISO: "2026-08-11",
+    id: "dependencyfinder", name: "依赖检索器", fullName: "Spark Dependency Explorer", version: "1.1.0", platforms: "Unity 2021.3+", category: "unity", releaseDateISO: "2026-08-24",
     description: "拖入资产或文件夹，同时查看它依赖了什么、又被哪些资源引用。正向与反向检索、代码引用定位和删除预览，让项目清理更清晰、更安全。",
-    releaseDate: "2026 年 8 月 11 日", releaseTitle: "Spark Dependency Explorer 1.1.0",
+    releaseDate: "2026 年 8 月 24 日", releaseTitle: "Spark Dependency Explorer 1.1.0",
     stories: [
       { title: "依赖与引用，在同一个工作台里", text: "左侧保留来源资产的导入层级，右侧随当前选择展示正向依赖或反向引用。直接与递归模式可以随时切换，图片资源还会显示真实缩略图。", visual: "dependency-workbench" },
       { title: "删除之前，先把边界看清楚", text: "逐项选择来源和专用依赖，在预览中确认最终清单。共享依赖、代码资产、Packages 资源和 Unity 内置资源都有明确的保护策略。", visual: "dependency-delete" }
@@ -41,27 +41,27 @@ window.INSPIRATION_PRODUCTS = [
     assets: [{ name: "Unity-Dependency-Finder.zip", label: "Unity 插件 ZIP", url: "https://github.com/LeoWalker023/lnspiration-unity-plugins/raw/refs/heads/main/dependency-finder/Unity-Dependency-Finder.zip" }]
   },
   {
-    id: "imageview", name: "Image View", fullName: "Image View", version: "1.0.0", platforms: "Windows 10/11 · x64", category: "software", releaseDateISO: "2026-09-04",
+    id: "imageview", name: "Image View", fullName: "Image View", version: "1.0.4", platforms: "Windows 10/11 · x64", category: "software", releaseDateISO: "2026-09-28",
     description: "轻量、快速的 Windows 图片查看与格式转换工具。打开一张图片后即可浏览同目录素材，并在不改动原文件的前提下完成 PSD 预览和常见格式转换。",
-    releaseDate: "2026 年 9 月 4 日", releaseTitle: "Image View 1.0.0",
+    releaseDate: "2026 年 9 月 28 日", releaseTitle: "Image View 1.0.4", releasePage: "https://github.com/LeoWalker023/Image-View/releases/tag/v1.0.4",
     stories: [
       { title: "打开图片，也打开整个文件夹", text: "从资源管理器双击图片或 PSD，Image View 会快速扫描同目录内容。缩略图栏、上一张/下一张和滚轮缩放，让浏览素材保持连贯。", visual: "imageview-browser" },
       { title: "PSD 预览，不必打开 Photoshop", text: "直接查看 PSD 与 PSB 的最终合成效果，透明图像使用棋盘格背景，并尽量保留正确的方向与色彩显示。", visual: "imageview-psd" },
       { title: "转换之前，先确认结果", text: "将 JPG、PNG、WebP、TIFF 或 PSD 导出为常用格式。支持质量、尺寸和输出目录设置，默认不覆盖原文件。", visual: "imageview-convert" }
     ],
     features: ["支持 JPG、JPEG、PNG、BMP、GIF、WebP、TIFF、PSD 与 PSB 预览", "同文件夹快速浏览、缩略图栏、缩放、旋转和全屏", "PSD/PSB 合成预览，不修改原始文件", "导出 PNG、JPEG、WebP，并支持批量转换", "拖拽到桌面或其他软件，支持文件信息面板", "Windows 10/11 x64 绿色便携版，无需额外安装 .NET"],
-    assets: [{ name: "ImageView-v1.0.0-win-x64.zip", label: "Windows 便携版 ZIP", url: "https://github.com/LeoWalker023/Image-View/releases/download/v1.0.0/ImageView-v1.0.0-win-x64.zip" }]
+    assets: [{ name: "ImageView-v1.0.4-win-x64.zip", label: "Windows 便携版 ZIP", url: "https://github.com/LeoWalker023/Image-View/releases/download/v1.0.4/ImageView-v1.0.4-win-x64.zip" }]
   },
   {
-    id: "desktopvideoplayer", name: "Desktop Video Player", fullName: "DVP · Desktop Video Player", version: "1.0.0", platforms: "Windows 10/11 · x64", category: "software", releaseDateISO: "2026-09-08",
+    id: "desktopvideoplayer", name: "Desktop Video Player", fullName: "DVP · Desktop Video Player", version: "1.0.3", platforms: "Windows 10/11 · x64", category: "software", releaseDateISO: "2026-09-09",
     description: "面向本地视频检查的轻量桌面播放器。支持连续播放、逐帧前进后退、倍速、双视频左右对比和全屏查看，让视频检查保持准确而安静。",
-    releaseDate: "2026 年 9 月 8 日", releaseTitle: "Desktop Video Player 1.0.0", releasePage: "https://github.com/LeoWalker023/Desktop-Video-Player/releases/tag/v1.0.0",
+    releaseDate: "2026 年 9 月 9 日", releaseTitle: "Desktop Video Player 1.0.3", releasePage: "https://github.com/LeoWalker023/Desktop-Video-Player/releases/tag/v1.0.3",
     stories: [
       { title: "连续播放，也能随时停在细节上", text: "按原始时间轴播放本地 MP4、MKV 或 MOV，支持多档倍速和循环播放。暂停后可以继续从当前画面恢复，不打乱检查节奏。", visual: "videoplayer-playback" },
       { title: "一帧一帧，准确找到画面", text: "使用时间轴最近帧定位、帧号输入和上一帧/下一帧操作。打开视频后先停在首帧，逐帧检查不会闪黑或跳过目标画面。", visual: "videoplayer-frame" },
       { title: "两段视频，同一条时间轴", text: "同时拖入两个视频即可进入左右对比模式。时间轴按最长视频计算，较短视频停在最后一帧并标记结束，两侧保持清晰可比。", visual: "videoplayer-compare" }
     ],
     features: ["支持 MP4、MKV、MOV 等常见本地视频格式", "0.1× 到 4× 多档倍速与循环播放", "上一帧/下一帧、跳 10 帧、帧号输入和时间轴最近帧定位", "双视频左右对比，共用时间轴和逐帧控制", "显示帧率、分辨率、当前帧和时间码等媒体摘要", "Windows 10/11 x64 绿色便携版，离线运行并附带 FFmpeg 组件"],
-    assets: [{ name: "DesktopVideoPlayer-1.0.0-win-x64.zip", label: "Windows 便携版 ZIP", url: "https://github.com/LeoWalker023/Desktop-Video-Player/releases/download/v1.0.0/DesktopVideoPlayer-1.0.0-win-x64.zip" }]
+    assets: [{ name: "DesktopVideoPlayer-1.0.3-win-x64.zip", label: "Windows 便携版 ZIP", url: "https://github.com/LeoWalker023/Desktop-Video-Player/releases/download/v1.0.3/DesktopVideoPlayer-1.0.3-win-x64.zip" }]
   }
 ];
